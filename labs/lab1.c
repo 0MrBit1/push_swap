@@ -26,21 +26,20 @@ static int overflow_checker(char *number)
     return 0; 
 } 
 
-static int digit_checker(char **numbers , int i ) 
+static int digit_checker(char *numbers  ) 
 {
     int j;
-    int help_me ;
+    int sign ;
 
-    help_me = ( numbers[i][0] == '+' ||  numbers[i][0]  == '-' ) &&  ft_strlen(numbers[i]) == 1 ; 
-    if (help_me)
-    {
+    sign =  ( *numbers == '+' ||  *numbers  == '-' ) && ! *( numbers + 1); 
+    if (sign)
         return 1 ; 
-    }
     j = 0;
-    while(numbers[i][j])
+    if (*numbers == '+' ||  *numbers  == '-')
+        j++;
+    while(numbers[j])
     {
-        help_me =  ( numbers[i][j] == '+' ||  numbers[i][j]  == '-' ) && j == 0 ;
-        if (!ft_isdigit( numbers[i][j]) && !help_me )
+        if (!ft_isdigit(numbers[j])  )
             return 1;   
         j++;
     }
@@ -56,7 +55,7 @@ int *create_stake_a(int argc , char **numbers)
     stake_a = malloc(sizeof(int) * ( i));
     while(i)
     {
-         if (digit_checker(numbers , i ) )
+         if (digit_checker(numbers[i] ) )
          {
             free(stake_a);
             return NULL ;
