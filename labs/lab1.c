@@ -1,62 +1,41 @@
 #include "../include/push_swap.h"
 
-int overflow_checker(char *number)
+static int overflow_checker(char *number)
 {
-    char *int_max; 
     char *int_min;
     int   i;
     int   j;
-    int     flag;
-   
-
+    int   number_len;
+    
     i = 0;
-    j = 0;
-    flag = 0;
-    int_max =  "2147483647";
-    int_min =  "2147483648";
-    if (number[0] == '+' || number[0] == '-')
+    j = 0; 
+    int_min = "2147483648";
+    if ( !ft_strncmp(number , int_min,  10  ) ) 
+        return 1 ;
+    if (*number == '+' || *number == '-')
+        number++;
+    number_len =  ft_strlen(number) ; 
+    if (number_len !=  10)
+        return  number_len > 10 ;
+    while( i  < number_len )
     {
-        flag = 1 ;
-        number = &(number[1])  ;
-    }
-    if (ft_strlen(number) > 10 )
-    {
-        return 1;
-    }
-    if (ft_strlen(number) < 10)
-    {
-        return 0;
-    }
-    if (flag && number[i - 1] == '-')
-    {
-
-         while( i  < ft_strlen(number) )
-         {
-            if   ( number[i] - '0'  >  int_min[i] - '0' ) 
-            {
-                return 1; 
-            }
-        i++;
-        }
-
-    }
-    while( i  < ft_strlen(number) )
-    {
-        if   ( number[i] - '0'  >  int_max[i] - '0' ) 
-        {
+        if   ( number[i] - '0'  >  int_min[i] - '0') 
             return 1; 
-        }
         i++;
     }
-    return 0 ; 
+    return 0; 
 } 
 
-int digit_checker(char **numbers , int i ) 
+static int digit_checker(char **numbers , int i ) 
 {
-
     int j;
-    int help_me ; 
+    int help_me ;
 
+    help_me = ( numbers[i][0] == '+' ||  numbers[i][0]  == '-' ) &&  ft_strlen(numbers[i]) == 1 ; 
+    if (help_me)
+    {
+        return 1 ; 
+    }
     j = 0;
     while(numbers[i][j])
     {
