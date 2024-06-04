@@ -8,7 +8,6 @@ int  sa_function(int *stake_a, int size_a )
     // Swap the first 2 elements at the top of stack a.
     //Do nothing if there is only one or no elements.
 
-
     if (!stake_a || size_a == 1)
     {
         return 1; 
@@ -26,15 +25,14 @@ int  sb_function(int *stake_b, int size_b )
      //Swap the first 2 elements at the top of stack b.
      //Do nothing if there is only one or no elements
      if (!stake_b || size_b == 1)
-     {
-        return 0; 
-     }
+        return 0;
+    
     int swap;
 
     swap = stake_b[size_b - 1];
-    stake_b[size_b - 1]  = stake_b[size_b - 2]; 
-    stake_b[size_b - 2]  = swap;
-    return 1 ; 
+    stake_b[size_b - 1] = stake_b[size_b - 2]; 
+    stake_b[size_b - 2] = swap;
+    return 1; 
 }
 
 void ss_function(int *stake_a , int *stake_b , int size_a , int size_b)
@@ -69,8 +67,16 @@ int ra_function(int *stake_a , int size_a)
 {
     //Shift up all elements of stack a by 1.
     //The first element becomes the last one.
+    int i;
+    int swap;
 
+    i = size_a -1 ; 
 
-
-
+    while(i > 0)
+    {
+        swap = stake_a[i]; 
+        stake_a[i] = stake_a[i - 1] ;
+        stake_a[i - 1] = swap ; 
+        i--;
+    }
 }
