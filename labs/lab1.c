@@ -1,13 +1,16 @@
-#include "../include/push_swap.h"
+//#include "../include/push_swap.h"
+
+#include <stdio.h>
 
 int rra_function(int *stake_a , int  size_a)
 {
-    //Shift up all elements of stack a by 1.
+
+      //Shift up all elements of stack a by 1.
     //The first element becomes the last one.
     int i;
     int swap;
 
-    i = size_a - 1;
+    i = size_a -1 ;
     while(i > 0  )
     {
         swap = stake_a[i]; 
@@ -16,7 +19,6 @@ int rra_function(int *stake_a , int  size_a)
         i--;
     }
 }
-
 
 int main(int argc , char **argv)
 {

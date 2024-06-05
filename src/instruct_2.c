@@ -34,7 +34,7 @@ int rb_function(int *stake_b , int size_b)
     }
 }
 
-int rr_function(int *stake_a , int *stake_b , int )
+int rr_function(int *stake_a , int *stake_b , int size_a , int size_b )
 {
     //ra and rb at same time 
     rb_function(stake_a ,  size_a) ; 
@@ -43,8 +43,7 @@ int rr_function(int *stake_a , int *stake_b , int )
 
 int rra_function(int *stake_a , int  size_a)
 {
-
-      //Shift up all elements of stack a by 1.
+    //Shift up all elements of stack a by 1.
     //The first element becomes the last one.
     int i;
     int swap;
@@ -59,11 +58,10 @@ int rra_function(int *stake_a , int  size_a)
     }
 }
 
-
 int rrb_function(int *stake_b , int  size_b)
 {
 
-      //Shift up all elements of stack a by 1.
+    //Shift up all elements of stack a by 1.
     //The first element becomes the last one.
     int i;
     int swap;
@@ -77,4 +75,3 @@ int rrb_function(int *stake_b , int  size_b)
         i--;
     }
 }
-
