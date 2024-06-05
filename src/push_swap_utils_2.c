@@ -57,7 +57,6 @@ int pa_function(int *stake_a , int *stake_b , int size_a , int *size_b)
     //Do nothing if a is empty
     if (!stake_a)
         return 0; 
-
     stake_b = resize_array ( stake_b , size_b );
     stake_b[ *size_b - 1] = stake_a[size_a -1];
     return 1; 
@@ -70,13 +69,13 @@ int ra_function(int *stake_a , int size_a)
     int i;
     int swap;
 
-    i = size_a -1 ; 
+    i = 0  ; 
 
-    while(i > 0)
+    while(i < size_a)
     {
         swap = stake_a[i]; 
-        stake_a[i] = stake_a[i - 1] ;
-        stake_a[i - 1] = swap ; 
-        i--;
+        stake_a[i] = stake_a[i + 1] ;
+        stake_a[i + 1] = swap ; 
+        i++;
     }
 }
