@@ -34,7 +34,7 @@ int rb_function(int *stake_b , int size_b)
     }
 }
 
-int rr_function(int *stake_a , int *stake_b , int )
+int rr_function(int *stake_a , int *stake_b  , int size_a , int size_b )
 {
     //ra and rb at same time 
     rb_function(stake_a ,  size_a) ; 
