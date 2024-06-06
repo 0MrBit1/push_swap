@@ -49,19 +49,14 @@ int rra_function(int *stake_a , int  size_a)
     int i;
     int swap;
 
-    i = 0 ;
-    while(i < size_a -1 )
+    i = size_a -1 ;
+    while(i > 0 )
     {
         swap = stake_a[i]; 
-        stake_a[i] = stake_a[i + 1] ;
-        stake_a[i + 1] = swap ; 
-        i++;
+        stake_a[i] = stake_a[i - 1] ;
+        stake_a[i - 1] = swap ; 
+        i--;
     }
-
-
-
-
-
 }
 
 
