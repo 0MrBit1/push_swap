@@ -1,17 +1,13 @@
 #include "../include/push_swap.h"
-
-int  *resize_array(int *stake_b , int *size_b  )
+void move_data(int *src , int *dest , int size)
 {
-    int *new_stake_b ; 
-    int i;
+    int i; 
 
-    new_stake_b = malloc(sizeof(int)*( *size_b + 1 ));
     i = 0;
-    while(i < *size_b)
+    while(i < size)
     {
-        new_stake_b[i] =  stake_b[i]; 
+        dest[i] =  src[i]; 
         i++;
     }
-    *size_b = *size_b + 1; 
-    free(stake_b);
 }
+
