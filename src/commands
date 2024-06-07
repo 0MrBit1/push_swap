@@ -1,5 +1,0 @@
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-
-
-git remote set-url origin git@github.com:1bdou/push_swap.git
