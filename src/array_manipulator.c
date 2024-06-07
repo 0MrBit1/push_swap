@@ -1,6 +1,5 @@
 #include "../include/push_swap.h"
 
-
 void move_data(int *src , int *dest , int size)
 {
     int i; 
