@@ -1,52 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int reverse_rotate_function(int *stake , int  size)
+void swap_values (int *addr1 , int *addr2 )
 {
-   //Shift down all elements of stack a by 1.
-   //The last element becomes the first one
-    int i;
-    int swap;
+    int swap ; 
 
-    i = size -1;
-    while(i > 0 )
+    swap = *addr1 ; 
+    *addr1 = *addr2 ; 
+    *addr2 =  swap ; 
+}
+
+int *bubble_sort(int *stake , int size)
+{
+    int i ;
+    int j ; 
+    int min ;  
+
+    i = 0 ; 
+    j = 0; 
+    min = i ; 
+
+    while (i < size)
     {
-        swap = stake[i]; 
-        stake[i] = stake[i - 1] ;
-        stake[i - 1] = swap ; 
-        i--;
+        while(j < size)
+        {
+            if (stake[j] < stake[min])
+            {
+                min = j; 
+            }
+            j++;
+        }
+        swap_values ( &(stake[i]) , &(stake[min]) ) ; 
+        i++ ;
+        j = i ;
+        min = i ; 
     }
 }
+
 int main(int argc , char **argv)
 {
 
-   int *tab; 
+    int tab[10] = {10 , 9 , 8 , 7 , -6 , 5 , 4 , 3 , 2 , 1 } ; 
 
-   tab = malloc(4 * sizeof(int)) ; 
-
-   tab[0] = -1 ;
-   tab[1] =  200;
-   tab[2] = 300;
-   tab[3] =  400 ;
-
-   reverse_rotate_function(tab , 4) ; 
-
-   int i ;
-
-   i = 0 ; 
-
-   while(i < 4)
-   {
-      printf("%d , " , tab[i]) ; 
-      i++;
-   }
+    bubble_sort( tab,  10) ; 
 
 
-   
+    int i = 0 ; 
 
-
-
-
-
+    while(i < 10 ) 
+    {
+        printf("%d\n" , tab[i] ) ; 
+        i++;
+    }
 
 }

@@ -2,15 +2,15 @@
 
 int  swap_top(int *stake, int size )
 {
-    // Swap the first 2 elements at the top of stack a.
+    //Swap the first 2 elements at the top of stack a.
     //Do nothing if there is only one or no elements.
     int swap;
     if (!stake || size == 1)
-        return 0; 
+        return 1; 
     swap = stake[size - 1];
     stake[size - 1]  = stake[size - 2]; 
     stake[size - 2] = swap;
-    return 1;
+    return 0;
 }
 
 int  push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_pop)
@@ -22,7 +22,7 @@ int  push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_po
     int *new_stake_pop;
 
     if (! *size_pop)
-        return 0 ;
+        return 1 ;
     new_stake_push = malloc(sizeof(int) * ( *size_push + 1 ));
     new_stake_pop =  malloc(sizeof(int) * ( *size_pop - 1 ));
     move_data(*stake_push , new_stake_push  , *size_push) ;
