@@ -1,39 +1,47 @@
-//#include "../include/push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "../include/push_swap.h"
 
-void swap_values (int *addr1 , int *addr2 )
+int *create_stake_a(int argc , char **numbers)
 {
-    int swap ; 
-
-    swap = *addr1 ; 
-    *addr1 = *addr2 ; 
-    *addr2 =  swap ; 
+    int i;
+    int *stake_a;
+ 
+    i = argc - 1;
+    stake_a = malloc(sizeof(int) * ( i));
+    if (!stake_a)
+        return NULL;
+    while(i)
+    {
+         if (digit_checker(numbers[i] ) )
+         {
+            free(stake_a);
+            return NULL ;
+         }
+         if (overflow_checker(numbers[i]))
+         { 
+            free(stake_a);
+            return NULL ;
+         }
+        stake_a[i - 1] = ft_atoi(numbers[i]);
+        i--;
+    }
+    return stake_a;
 }
 
-int *bubble_sort(int *stake , int size)
+
+
+int main (int argc , char **argv)
 {
-    int i ;
-    int j ; 
-    int min ;  
+    int *stake_a ; 
 
-    i = 0 ; 
-    j = 0; 
-    min = i ; 
+    int i;
 
-    while (i < size)
+    i = 0 ;
+    stake_a = create_stake_a( argc , argv); 
+    bubble_sort(stake_a , argc - 1) ; 
+
+    while(i < argc -1 )
     {
-        while(j < size)
-        {
-            if (stake[j] < stake[min])
-            {
-                min = j; 
-            }
-            j++;
-        }
-        swap_values ( &(stake[i]) , &(stake[min]) ) ; 
-        i++ ;
-        j = i ;
-        min = i ; 
+        printf("%d\n" , stake_a[i])  ; 
+        i++;
     }
 }

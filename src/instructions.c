@@ -37,7 +37,7 @@ int  push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_po
     return 0;
 }
 
-int rotate_function(int *stake , int size)
+void rotate_function(int *stake , int size)
 {
     //Shift up all elements of stack a by 1.
     //The first element becomes the last one.
@@ -54,7 +54,7 @@ int rotate_function(int *stake , int size)
     }
 }
 
-int reverse_rotate_function(int *stake , int  size)
+void reverse_rotate_function(int *stake , int  size)
 {
    //Shift down all elements of stack a by 1.
    //The last element becomes the first one
