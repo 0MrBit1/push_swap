@@ -1,6 +1,5 @@
 # Compiler and flags
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=leak
 
 # Source files
 SRC = src/arguments_checker.c src/array_manipulator.c src/bubble_sort.c src/instruction_repeat.c src/instructions.c src/push_swap.c
@@ -23,7 +22,7 @@ all: $(EXEC)
 # Link object files and libraries to create the executable
 $(EXEC): $(OBJ)
 	@echo "Linking object files and libraries..."
-	$(CC) $(OBJ) $(addprefix -L, $(LIB_PATH)) $(addprefix -l, $(LIBS)) -o $(EXEC)
+	$(CC) $(OBJ) $(addprefix -L, $(LIB_PATH)) $(addprefix -l, $(LIBS)) -no-pie -o $(EXEC)
 
 # Compile each source file into an object file
 src/arguments_checker.o: src/arguments_checker.c
@@ -50,4 +49,5 @@ clean:
 
 # Phony targets
 .PHONY: all clean
+
 
