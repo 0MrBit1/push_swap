@@ -1,7 +1,7 @@
 #include "../include/push_swap.h"
 
 
-void free_array(char **array)
+static int  free_array(char **array)
 {
     int i ;
 
@@ -12,8 +12,8 @@ void free_array(char **array)
         i++;
     }
     free(array);
+    return 1 ;
 }
-
 int calculate_numbers(char **argv)
 {
     int     len;
@@ -28,17 +28,11 @@ int calculate_numbers(char **argv)
     {
         numbers = ft_split(argv[i], ' '); 
         while(numbers[j])
-        {
-            if (digit_checker(numbers[j]))
-            {
-                free_array(numbers);
+        { 
+            if (digit_checker(numbers[j]) && free_array(numbers))
                 return 0;
-            }
-            if (overflow_checker(numbers[j]))
-            {
-                free_array(numbers);
+            if (overflow_checker(numbers[j]) &&  free_array(numbers))
                 return 0;
-            }
             len++;
             j++;
         }
@@ -51,38 +45,42 @@ int calculate_numbers(char **argv)
 
 int *create_stake_a(char **argv)
 {
-    int i;
-    int j;
-    int c;
-    int len;
+    int i[3];  // i , j , c
+    int len ; 
     int *stake_a;
     char **numbers;
 
-    if ( ! (len= calculate_numbers(argv)) )
+    if (!(len= calculate_numbers(argv)) )
         return NULL; 
-
-    if( ! (stake_a = malloc(sizeof(int) * (len))))
+    if(!(stake_a = malloc(sizeof(int) * (len))))
         return NULL;
-    i = 1;
-    j = 0;
-    c = 0;
-    while(argv[i])
+    ft_bzero(i, sizeof(int)*3);
+    i[0] = 1;
+    while(argv[i[0]])
     {
-        numbers = ft_split(argv[i] , ' ');
-        while(numbers[c])
+        numbers = ft_split(argv[i[0]] , ' ');
+        while(numbers[i[2]])
         {   
-            stake_a[j] = ft_atoi(numbers[c]) ; 
-            j++;
-            c++;
+            stake_a[i[1]++] = ft_atoi(numbers[i[2]]) ; 
+            i[2]++;
         }
         free_array(numbers);
-        c = 0 ;
-        i++;
+        i[2] = 0;
+        i[0]++;
     }
-    i = 0 ;
-    
+
+    int d ;
+
+    d = 0;
+
+    while (d < len)
+    {
+        printf("%d\n" , stake_a[d]) ;
+        d++;
+    }
     return stake_a;
 }
+
 
 /*void push_swap(int size  )
 {
