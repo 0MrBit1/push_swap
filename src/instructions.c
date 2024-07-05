@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-int  swap_top(int *stake, int size )
+int  swap_top(int *stake, int size , int flag)
 {
     //Swap the first 2 elements at the top of stack a.
     //Do nothing if there is only one or no elements.
@@ -10,10 +10,14 @@ int  swap_top(int *stake, int size )
     swap = stake[size - 1];
     stake[size - 1]  = stake[size - 2]; 
     stake[size - 2] = swap;
+    if (flag)
+        ft_printf("sa\n");
+    else
+        ft_printf("sb\n");
     return 0;
 }
 
-int  push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_pop)
+int  push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_pop , int flag)
 {
     //Take the first element at the top of stake_pop and put it at the top of stake_push.
     //Do nothing if stake_pop is empty
@@ -34,10 +38,14 @@ int  push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_po
     *stake_pop  = new_stake_pop ; 
     *size_push  = *size_push + 1; 
     *size_pop   = *size_pop - 1; 
+     if (flag)
+        ft_printf("pa\n");
+    else
+        ft_printf("pb\n");
     return 0;
 }
 
-void rotate_function(int *stake , int size)
+void rotate_function(int *stake , int size , int flag)
 {
     //Shift up all elements of stack a by 1.
     //The first element becomes the last one.
@@ -52,9 +60,13 @@ void rotate_function(int *stake , int size)
         stake[i + 1] = swap ; 
         i++;
     }
+     if (flag)
+        ft_printf("ra\n");
+    else
+        ft_printf("rb\n");
 }
 
-void reverse_rotate_function(int *stake , int  size)
+void reverse_rotate_function(int *stake , int  size , int flag)
 {
    //Shift down all elements of stack a by 1.
    //The last element becomes the first one
@@ -69,4 +81,8 @@ void reverse_rotate_function(int *stake , int  size)
         stake[i - 1] = swap ; 
         i--;
     }
+     if (flag)
+        ft_printf("rra\n");
+    else
+        ft_printf("rrb\n");
 }

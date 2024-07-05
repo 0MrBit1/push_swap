@@ -78,21 +78,12 @@ int main (int argc , char **argv)
         ft_printf("no arguments ,pleave give some arguments.\n") ;
     len = calculate_numbers(argv) ; 
     stake_a = create_stake_a(argv , len);
-    buble_sorted = create_stake_a(argv , len);
     if (!stake_a)
     {
         ft_printf("there was an error creating the stake .\n");
         return 1;
     }
+    buble_sorted = create_stake_a(argv , len);
     bubble_sort(buble_sorted , len);
-    int i ; 
-    
-    i = 0 ; 
-
-    while (i < len)
-    {
-        printf("%d\n" , buble_sorted[i]) ; 
-        i++;
-    }
     return 0;
 }
