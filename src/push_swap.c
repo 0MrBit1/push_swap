@@ -1,6 +1,5 @@
 #include "../include/push_swap.h"
 
-
 static int  free_array(char **array)
 {
     int i ;
@@ -23,7 +22,7 @@ int calculate_numbers(char **argv)
 
     i = 1;
     j = 0;
-    len = 0 ; 
+    len = 0; 
     while(argv[i])
     {
         numbers = ft_split(argv[i], ' '); 
@@ -43,14 +42,13 @@ int calculate_numbers(char **argv)
     return len;
 }
 
-int *create_stake_a(char **argv)
+int *create_stake_a(char **argv , int len)
 {
     int i[3];  // i , j , c
-    int len ; 
     int *stake_a;
     char **numbers;
 
-    if (!(len= calculate_numbers(argv)) )
+    if (!len)
         return NULL; 
     if(!(stake_a = malloc(sizeof(int) * (len))))
         return NULL;
@@ -68,41 +66,33 @@ int *create_stake_a(char **argv)
         i[2] = 0;
         i[0]++;
     }
-
-    int d ;
-
-    d = 0;
-
-    while (d < len)
-    {
-        printf("%d\n" , stake_a[d]) ;
-        d++;
-    }
     return stake_a;
 }
-
-
-/*void push_swap(int size  )
-{
-    int range; 
-    
-    range = range_decider(size); 
-}*/
 int main (int argc , char **argv)
 {
     int *stake_a; 
     int *buble_sorted; 
-    int range;
+    int len;
 
     if (argc < 2 )
-        ft_printf("no arguments ,pleave give some arguments.\n") ;     
-    stake_a = create_stake_a(argv); 
-    //buble_sorted = create_stake_a(argv); 
+        ft_printf("no arguments ,pleave give some arguments.\n") ;
+    len = calculate_numbers(argv) ; 
+    stake_a = create_stake_a(argv , len);
+    buble_sorted = create_stake_a(argv , len);
     if (!stake_a)
     {
         ft_printf("there was an error creating the stake .\n");
         return 1;
     }
-    //bubble_sort(buble_sorted , argc - 1);
-    //push_swap(argc - 1  );
+    bubble_sort(buble_sorted , len);
+    int i ; 
+    
+    i = 0 ; 
+
+    while (i < len)
+    {
+        printf("%d\n" , buble_sorted[i]) ; 
+        i++;
+    }
+    return 0;
 }

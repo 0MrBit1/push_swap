@@ -1,8 +1,8 @@
-    < range  -> push to b and rotate to b   , incremant the start
+a number in stake-a  < range  -> push to b and rotate b   , then increment the start
 
-    == push to b , do nothing increment the start  
+same  == push to b , do nothing increment the start  
 
-    > range  -> rotate a 
+  same   > range  -> rotate a 
 
 now we in b 
 khassna nqassmo stake b 
