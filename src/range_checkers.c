@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-int  range_decider(int size)
+int  range_decider(int size , int *start_end)
 {
     int range ; 
     
@@ -12,51 +12,65 @@ int  range_decider(int size)
         range = 35;
     else
         range = 45;
-    
-    return range ; 
+
+    start_end[0] = 0;
+    start_end[1] = range;  
 }
 
-check_if_superior(int start , int range ,  int stake_top , int *sorted_array )
+int check_if_superior(int stake_top , int *sorted_array , int *start_end , int sorted_array_len )
 {
+    int start;
+    int end;
 
-    while(start < range)
+    start = start_end[1]++ ;
+    end =  sorted_array_len;
+
+    while(start < end)
     {
-
-        if (stake_top == range[start] )
+        if (stake_top == sorted_array[start] )
         {
             return  1;
         }
-    start ++ ;
+        start++ ; 
     }
-    return 0 ;
+
+    return 0 ; 
+    
 }
 
-check_if_inferior(int start , int range ,  int stake_top , int *sorted_array)
+int  check_if_inferior(int stake_top , int *sorted_array , int *start_end , int sorted_array_len)
 {
-    while(start < range)
+    int start  ;
+    int end ;
+
+    end = start_end[0] ;
+    start = 0 ;
+
+    while(start < end)
     {
 
-        if (stake_top == range[start] )
+        if (stake_top == sorted_array[start] )
         {
-            return  1 ;
+            return  1;
         }
-    start ++ ;
+        start++;
     }
-    return 0 ;
+
+    return 0 ; 
 
 }
 
-check_if_in(int start , int range ,  int stake_top , int *sorted_array)
+int check_if_in(int stake_top , int *sorted_array , int *start_end , int sorted_array_len)
 {
-   while(start < range)
-    {
+    int a ;
+    int b ;
 
-        if (stake_top == range[start] )
-        {
-            return  1 ;
-        }
-    start ++ ;
-    }
+    a = check_if_inferior(stake_top , sorted_array , start_end , sorted_array_len) ; 
+    b = check_if_superior(stake_top , sorted_array , start_end , sorted_array_len) ; 
+
+    if (!a && !b )
+        return 1 ;
     return 0 ;
+
 }
         

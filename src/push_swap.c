@@ -68,22 +68,34 @@ int *create_stake_a(char **argv , int len)
     }
     return stake_a;
 }
+
+int begin_checks()
+{
+
+
+    
+}
 int main (int argc , char **argv)
 {
     int *stake_a; 
     int *buble_sorted; 
-    int len;
+    int len_a_b_init[3];
+    int start_end[2];
 
     if (argc < 2 )
         ft_printf("no arguments ,pleave give some arguments.\n") ;
-    len = calculate_numbers(argv) ; 
-    stake_a = create_stake_a(argv , len);
+    len_a_b_init[0] = calculate_numbers(argv) ; 
+    len_a_b_init[1] = len_a_b_init[0]; 
+    len_a_b_init[2] = len_a_b_init[0]; 
+    stake_a = create_stake_a(argv , len_a_b_init[0]);
     if (!stake_a)
     {
         ft_printf("there was an error creating the stake .\n");
         return 1;
     }
-    buble_sorted = create_stake_a(argv , len);
-    bubble_sort(buble_sorted , len);
+    buble_sorted = create_stake_a(argv , len_a_b_init[0]);
+    bubble_sort(buble_sorted , len_a_b_init[0]);
+    range_decider(len_a_b_init[0] , start_end) ; 
+
     return 0;
 }

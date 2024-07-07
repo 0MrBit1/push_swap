@@ -1,4 +1,4 @@
-a number in stake-a  < range  -> push to b and rotate b   , then increment the start
+a number in stake_a  < range  -> push to b and rotate b   , then increment the start
 
 same  == push to b , do nothing increment the start  
 
@@ -8,5 +8,13 @@ now we in b
 khassna nqassmo stake b 
 nqalbo 3la akbar 3adad 
 ila kan f tarf foqan rotate 7ta yla3 lfouq 
-
 ila kan f tarf ta7tani ta7tani dir reverse rotate 7ta ytla3 lfouq 
+
+---------------------------------------------------
+
+1 - bubble sort the stake_a.
+2 - define a part from the bubble_sorted_a.
+3 - check if the top of stake_a in in the defined part , if valid , then push to stake_b and increment the range start (0->5 became 1 -> 6 ).
+4 - if the top of the stake_a is bigger than the defined range then reverse rotate or rotate depening on where the expected number to be found.
+5 - if the numbers is in a place fewer than the range , then : push to B and rotate B . and increment the start . (0->5 became 1 -> 6 ).
+6 - check for the bigger one in B and push to a.
