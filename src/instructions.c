@@ -10,6 +10,10 @@ int  swap_top(int *stake, int size , int flag)
     swap = stake[size - 1];
     stake[size - 1]  = stake[size - 2]; 
     stake[size - 2] = swap;
+    if (flag == 3)
+    {
+        return 0 ; 
+    }
     if (flag)
         ft_printf("sa\n");
     else
@@ -25,7 +29,7 @@ int  push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_po
     int *new_stake_push; 
     int *new_stake_pop;
 
-    if (! *size_pop)
+    if (!*size_pop)
         return 1 ;
     new_stake_push = malloc(sizeof(int) * ( *size_push + 1 ));
     new_stake_pop =  malloc(sizeof(int) * ( *size_pop - 1 ));
@@ -60,6 +64,10 @@ void rotate_function(int *stake , int size , int flag)
         stake[i + 1] = swap ; 
         i++;
     }
+     if (flag == 3)
+    {
+        return  ; 
+    }
      if (flag)
         ft_printf("ra\n");
     else
@@ -80,6 +88,10 @@ void reverse_rotate_function(int *stake , int  size , int flag)
         stake[i] = stake[i - 1] ;
         stake[i - 1] = swap ; 
         i--;
+    }
+     if (flag == 3)
+    {
+        return  ; 
     }
      if (flag)
         ft_printf("rra\n");

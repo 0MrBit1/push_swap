@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-int  range_decider(int size , int *start_end)
+void  range_decider(int size , int *start_end)
 {
     int range ; 
     

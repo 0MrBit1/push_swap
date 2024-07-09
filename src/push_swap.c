@@ -93,7 +93,7 @@ int begin_checks(int stake_top , int *sorted_array , int *start_end , int sorted
 int dispatcher(int status , int **stake_b , int **stake_a , int *start_end , int *size_push_pop)
 {
 
-    if (status == 0 )
+    if (!status )
     {
         rotate_function(*stake_a , size_push_pop[1] , 1 ) ; 
     }
@@ -115,10 +115,6 @@ int dispatcher(int status , int **stake_b , int **stake_a , int *start_end , int
         start_end[1]++;
 
     }
-
-
-
-
 }
 int main (int argc , char **argv)
 {
@@ -144,9 +140,12 @@ int main (int argc , char **argv)
     buble_sorted = create_stake_a(argv , len_a_b_init[0]);
     bubble_sort(buble_sorted , len_a_b_init[0]);
     range_decider(len_a_b_init[0] , start_end) ; 
-    status = begin_checks( stake_a[   len_a_b_init[1] - 1      ] , buble_sorted , start_end , len_a_b_init[0]);
     
-    dispatcher(status , &stake_b , &stake_a , start_end ,  len_a_b_init ) ;
+    while (len_a_b_init[1])
+    {
+        status = begin_checks( stake_a[   len_a_b_init[1] - 1      ] , buble_sorted , start_end , len_a_b_init[0]);
+        dispatcher(status , &stake_b , &stake_a , start_end ,  len_a_b_init ) ;
+    }
 
     return 0;
 }

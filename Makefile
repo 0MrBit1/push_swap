@@ -2,10 +2,10 @@
 CFLAGS = -Wall -Wextra -fsanitize=leak
 
 # Source files
-SRC = src/arguments_checker.c src/array_manipulator.c src/bubble_sort.c src/instruction_repeat.c src/instructions.c src/push_swap.c
+SRC = src/arguments_checker.c src/array_manipulator.c src/bubble_sort.c src/instruction_repeat.c src/instructions.c src/push_swap.c src/range_checkers.c
 
 # Object files
-OBJ = src/arguments_checker.o src/array_manipulator.o src/bubble_sort.o src/instruction_repeat.o src/instructions.o src/push_swap.o
+OBJ = src/arguments_checker.o src/array_manipulator.o src/bubble_sort.o src/instruction_repeat.o src/instructions.o src/push_swap.o src/range_checkers.o
 
 # Library path
 LIB_PATH = lib
@@ -42,6 +42,9 @@ src/instructions.o: src/instructions.c
 
 src/push_swap.o: src/push_swap.c
 	$(CC) $(CFLAGS) -c src/push_swap.c -o src/push_swap.o
+
+src/range_checkers.o: src/range_checkers.c
+	$(CC) $(CFLAGS) -c src/range_checkers.c -o src/range_checkers.o
 
 # Clean up generated files
 clean:
