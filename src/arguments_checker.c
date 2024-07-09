@@ -17,7 +17,7 @@ int overflow_checker(char *number)
         return  number_len > 10 ;
     while( i  < number_len )
     {
-        if   ( number[i] - '0'  >  int_min[i] - '0') 
+        if ( number[i] - '0' >  int_min[i] - '0') 
             return 1; 
         i++;
     }
@@ -27,7 +27,7 @@ int overflow_checker(char *number)
 int digit_checker(char *numbers  ) 
 {
     int j;
-    int sign ;
+    int sign;
 
     sign =  ( *numbers == '+' ||  *numbers  == '-' ) && ! *( numbers + 1); 
     if (sign)

@@ -6,7 +6,7 @@ static void swap_values (int *addr1 , int *addr2 )
 
     swap = *addr1 ; 
     *addr1 = *addr2 ; 
-    *addr2 =  swap ; 
+    *addr2 = swap ; 
 }
 
 void bubble_sort(int *stake , int size)

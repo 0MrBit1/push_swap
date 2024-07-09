@@ -24,7 +24,7 @@ int check_if_superior(int stake_top , int *sorted_array , int *start_end , int s
 
     start = start_end[1]++ ;
     end =  sorted_array_len;
-
+  
     while(start < end)
     {
         if (stake_top == sorted_array[start] )
