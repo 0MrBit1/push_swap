@@ -146,6 +146,7 @@ int main (int argc , char **argv)
         status = begin_checks( stake_a[   len_a_b_init[1] - 1      ] , buble_sorted , start_end , len_a_b_init[0]);
         dispatcher(status , &stake_b , &stake_a , start_end ,  len_a_b_init ) ;
     }
+   //lkbir lte7t
 
     return 0;
 }
