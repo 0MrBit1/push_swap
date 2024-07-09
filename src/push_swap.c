@@ -90,11 +90,13 @@ int begin_checks(int stake_top , int *sorted_array , int *start_end , int sorted
     }
 }
 
-int dispatcher(int status , int **stake_push , int **stake_pop , int *size_push , int *size_pop , int flag)
+int dispatcher(int status , int **stake_b , int **stake_a , int *start_end , int *size_push_pop)
 {
 
     if (status == 0 )
     {
+
+        rotate_function(stake_a , size_push_pop[1] , 1 ) ; 
 
     }
     else if (status == 1)
@@ -104,13 +106,10 @@ int dispatcher(int status , int **stake_push , int **stake_pop , int *size_push 
     else 
     {
 
-        if valid , then push to stake_b and increment the range start (0->5 became 1 -> 6 ) . 
-
-
-        push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_pop , int flag)
-        
-        push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_pop , int flag)
-
+        push_pop(stake_b , stake_a , &(size_push_pop[1]) , &(size_push_pop[2]) , 1) ; 
+              
+        start_end[0]++;
+        start_end[1]++;
 
     }
 
@@ -121,6 +120,7 @@ int dispatcher(int status , int **stake_push , int **stake_pop , int *size_push 
 int main (int argc , char **argv)
 {
     int *stake_a; 
+    int *stake_b;
     int *buble_sorted; 
     int len_a_b_init[3];
     int start_end[2];
@@ -130,8 +130,9 @@ int main (int argc , char **argv)
         ft_printf("no arguments ,pleave give some arguments.\n") ;
     len_a_b_init[0] = calculate_numbers(argv) ; 
     len_a_b_init[1] = len_a_b_init[0]; 
-    len_a_b_init[2] = len_a_b_init[0]; 
+    len_a_b_init[2] = 0; 
     stake_a = create_stake_a(argv , len_a_b_init[0]);
+    stake_b = NULL ;
     if (!stake_a)
     {
         ft_printf("there was an error creating the stake .\n");
@@ -141,6 +142,8 @@ int main (int argc , char **argv)
     bubble_sort(buble_sorted , len_a_b_init[0]);
     range_decider(len_a_b_init[0] , start_end) ; 
     status = begin_checks( stake_a[   len_a_b_init[1] - 1      ] , buble_sorted , start_end , len_a_b_init[0]);
+    
+    dispatcher(status , &stake_b , &stake_a , start_end ,  len_a_b_init ) ;
 
 
     return 0;
