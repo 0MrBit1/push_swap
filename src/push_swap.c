@@ -95,18 +95,21 @@ int dispatcher(int status , int **stake_b , int **stake_a , int *start_end , int
 
     if (status == 0 )
     {
-
-        rotate_function(stake_a , size_push_pop[1] , 1 ) ; 
-
+        rotate_function(*stake_a , size_push_pop[1] , 1 ) ; 
     }
     else if (status == 1)
     {
+       push_pop(stake_b , stake_a , &(size_push_pop[2]) , &(size_push_pop[1]) , 1) ; 
+       rotate_function(*stake_b , size_push_pop[1] , 1 ) ; 
+
+        start_end[0]++;
+        start_end[1]++;
 
     }
     else 
     {
 
-        push_pop(stake_b , stake_a , &(size_push_pop[1]) , &(size_push_pop[2]) , 1) ; 
+        push_pop(stake_b , stake_a , &(size_push_pop[2]) , &(size_push_pop[1]) , 1) ; 
               
         start_end[0]++;
         start_end[1]++;
@@ -144,7 +147,6 @@ int main (int argc , char **argv)
     status = begin_checks( stake_a[   len_a_b_init[1] - 1      ] , buble_sorted , start_end , len_a_b_init[0]);
     
     dispatcher(status , &stake_b , &stake_a , start_end ,  len_a_b_init ) ;
-
 
     return 0;
 }
