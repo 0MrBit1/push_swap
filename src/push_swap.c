@@ -100,14 +100,9 @@ int main (int argc , char **argv)
         status = begin_checks( stake_a[   lens[1] - 1      ] , buble_sorted , start_end , lens[0]);
         dispatcher(status , &stake_b , &stake_a , start_end ,  lens ) ;
     }
- 
-    int i = 0 ; 
 
-    while (i < lens[2] )
-    {
-        ft_printf("%d\n" , stake_b[i] ) ; 
-        i ++;
-    }
+    
+
 
     return 0;
 }
