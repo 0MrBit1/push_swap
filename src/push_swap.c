@@ -32,18 +32,14 @@ int begin_checks(int stake_top , int *sorted_array , int *start_end , int sorted
     int status[3];
     int i ;
 
-
     i = 0 ;
     status[0] = check_if_superior(stake_top , sorted_array , start_end ,  sorted_array_len ) ;
     status[1] = check_if_inferior(stake_top , sorted_array , start_end ) ;
     status[2] = check_if_in(stake_top , sorted_array , start_end ,  sorted_array_len) ; 
-
     while(i < 3)
     {
         if (status[i])
-        {
             return i;
-        }
         i++;
     }
 }
@@ -104,7 +100,6 @@ int main (int argc , char **argv)
         dispatcher(status , &stake_b , &stake_a , start_end ,  len_init_a_b ) ;
     }
  
-
     int i = 0 ; 
 
     while (i < len_init_a_b[2] )

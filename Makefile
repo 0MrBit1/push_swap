@@ -2,10 +2,10 @@
 CFLAGS = -Wall -Wextra -fsanitize=leak -g 
 
 # Source files
-SRC = src/arguments_checker.c  src/bubble_sort.c src/instruction_repeat.c src/instructions.c src/push_swap.c src/range_checkers.c
+SRC = src/arguments_checker.c  src/bubble_sort.c src/instruction_repeat.c src/instructions_1.c src/instructions_2.c src/push_swap.c src/range_checkers.c
 
 # Object files
-OBJ = src/arguments_checker.o  src/bubble_sort.o src/instruction_repeat.o src/instructions.o src/push_swap.o src/range_checkers.o
+OBJ = src/arguments_checker.o  src/bubble_sort.o src/instruction_repeat.o src/instructions_1.o src/instructions_2.o src/push_swap.o src/range_checkers.o
 
 # Library path
 LIB_PATH = lib
@@ -34,8 +34,11 @@ src/bubble_sort.o: src/bubble_sort.c
 src/instruction_repeat.o: src/instruction_repeat.c
 	$(CC) $(CFLAGS) -c src/instruction_repeat.c -o src/instruction_repeat.o
 
-src/instructions.o: src/instructions.c
-	$(CC) $(CFLAGS) -c src/instructions.c -o src/instructions.o
+src/instructions_1.o: src/instructions_1.c
+	$(CC) $(CFLAGS) -c src/instructions_1.c -o src/instructions_1.o
+
+src/instructions_2.o: src/instructions_2.c
+	$(CC) $(CFLAGS) -c src/instructions_2.c -o src/instructions_2.o
 
 src/push_swap.o: src/push_swap.c
 	$(CC) $(CFLAGS) -c src/push_swap.c -o src/push_swap.o
