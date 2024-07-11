@@ -1,11 +1,11 @@
 # Compiler and flags
-CFLAGS = -Wall -Wextra -fsanitize=leak
+CFLAGS = -Wall -Wextra -fsanitize=leak -g 
 
 # Source files
-SRC = src/arguments_checker.c src/array_manipulator.c src/bubble_sort.c src/instruction_repeat.c src/instructions.c src/push_swap.c src/range_checkers.c
+SRC = src/arguments_checker.c  src/bubble_sort.c src/instruction_repeat.c src/instructions.c src/push_swap.c src/range_checkers.c
 
 # Object files
-OBJ = src/arguments_checker.o src/array_manipulator.o src/bubble_sort.o src/instruction_repeat.o src/instructions.o src/push_swap.o src/range_checkers.o
+OBJ = src/arguments_checker.o  src/bubble_sort.o src/instruction_repeat.o src/instructions.o src/push_swap.o src/range_checkers.o
 
 # Library path
 LIB_PATH = lib
@@ -27,9 +27,6 @@ $(EXEC): $(OBJ)
 # Compile each source file into an object file
 src/arguments_checker.o: src/arguments_checker.c
 	$(CC) $(CFLAGS) -c src/arguments_checker.c -o src/arguments_checker.o
-
-src/array_manipulator.o: src/array_manipulator.c
-	$(CC) $(CFLAGS) -c src/array_manipulator.c -o src/array_manipulator.o
 
 src/bubble_sort.o: src/bubble_sort.c
 	$(CC) $(CFLAGS) -c src/bubble_sort.c -o src/bubble_sort.o

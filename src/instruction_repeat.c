@@ -3,23 +3,22 @@
 void ss(int *stake_a , int *stake_b , int size_a , int size_b)
 {
     //sa and sb at the same time
-    swap_top(stake_a, size_a , 3);
-    swap_top(stake_b, size_b , 3 );
+    sa(stake_a, size_a);
+    sb(stake_b, size_b);
     ft_printf("ss\n");
 }
 
 void rr(int *stake_a , int *stake_b , int size_a , int size_b)
 {
     //ra and rb at the same time.
-    rotate_function(stake_a ,  size_a, 3);
-    rotate_function(stake_b ,  size_b, 3);
+    ra(stake_a ,  size_a);
+    rb(stake_b ,  size_b);
     ft_printf("rr\n");
 }
-
 void rrr (int *stake_a , int *stake_b , int size_a , int size_b)
 {
     //rra and rrb at the same time.
-    reverse_rotate_function(stake_a ,   size_a, 3);
-    reverse_rotate_function(stake_b ,   size_b, 3) ;
+    rra(stake_a ,   size_a);
+    rrb(stake_b ,   size_b) ;
     ft_printf("rrr\n");
 } 

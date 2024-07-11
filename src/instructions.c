@@ -1,55 +1,33 @@
 #include "../include/push_swap.h"
 
-int  swap_top(int *stake, int size , int flag)
+int  sa(int *stake_a, int size)
 {
     //Swap the first 2 elements at the top of stack a.
     //Do nothing if there is only one or no elements.
     int swap;
-    if (!stake || size == 1)
+    if (!stake_a || size == 1)
         return 1; 
-    swap = stake[size - 1];
-    stake[size - 1]  = stake[size - 2]; 
-    stake[size - 2] = swap;
-    if (flag == 3)
-    {
-        return 0 ; 
-    }
-    if (flag)
-        ft_printf("sa\n");
-    else
-        ft_printf("sb\n");
+    swap = stake_a[size - 1];
+    stake_a[size - 1] = stake_a[size - 2]; 
+    stake_a[size - 2] = swap;
+    ft_printf("sa\n") ; 
     return 0;
 }
-
-int  push_pop(int **stake_push , int **stake_pop , int *size_push , int *size_pop , int flag)
+int  sb(int *stake_b , int size)
 {
-    //Take the first element at the top of stake_pop and put it at the top of stake_push.
-    //Do nothing if stake_pop is empty
-
-    int *new_stake_push; 
-    int *new_stake_pop;
-
-    if (!*size_pop)
-        return 1 ;
-    new_stake_push = malloc(sizeof(int) * ( *size_push + 1 ));
-    new_stake_pop =  malloc(sizeof(int) * ( *size_pop - 1 ));
-    move_data(*stake_push , new_stake_push  , *size_push) ;
-    move_data(*stake_pop , new_stake_pop , *size_pop -1 ) ;
-    new_stake_push[ *size_push ] = (*stake_pop)[*size_pop -1 ] ; 
-    free(*stake_push);
-    free(*stake_pop);
-    *stake_push = new_stake_push ; 
-    *stake_pop  = new_stake_pop ; 
-    *size_push  = *size_push + 1; 
-    *size_pop   = *size_pop - 1; 
-     if (flag)
-        ft_printf("pa\n");
-    else
-        ft_printf("pb\n");
+    //Swap the first 2 elements at the top of stack b.
+    //Do nothing if there is only one or no elements.
+    int swap;
+    if (!stake_b || size == 1)
+        return 1;
+    swap = stake_b[size - 1];
+    stake_b[size - 1]  = stake_b[size - 2]; 
+    stake_b[size - 2] = swap;
+    ft_printf("sb\n") ; 
     return 0;
 }
 
-void rotate_function(int *stake , int size , int flag)
+void ra(int *stake_a , int size)
 {
     //Shift up all elements of stack a by 1.
     //The first element becomes the last one.
@@ -59,22 +37,33 @@ void rotate_function(int *stake , int size , int flag)
     i = 0 ;
     while(i < size -1 )
     {
-        swap = stake[i]; 
-        stake[i] = stake[i + 1] ;
-        stake[i + 1] = swap ; 
+        swap = stake_a[i]; 
+        stake_a[i] = stake_a[i + 1] ;
+        stake_a[i + 1] = swap ; 
         i++;
     }
-     if (flag == 3)
-    {
-        return  ; 
-    }
-     if (flag)
-        ft_printf("ra\n");
-    else
-        ft_printf("rb\n");
+    ft_printf("ra\n") ; 
 }
 
-void reverse_rotate_function(int *stake , int  size , int flag)
+void rb(int *stake_b , int size)
+{
+    //Shift up all elements of stack a by 1.
+    //The first element becomes the last one.
+    int i;
+    int swap;
+
+    i = 0;
+    while(i < size -1)
+    {
+        swap = stake_b[i]; 
+        stake_b[i] = stake_b[i + 1] ;
+        stake_b[i + 1] = swap ; 
+        i++;
+    }
+    ft_printf("rb\n") ; 
+}
+
+void rra(int *stake_a , int  size )
 {
    //Shift down all elements of stack a by 1.
    //The last element becomes the first one
@@ -84,17 +73,75 @@ void reverse_rotate_function(int *stake , int  size , int flag)
     i = size -1;
     while(i > 0 )
     {
-        swap = stake[i]; 
-        stake[i] = stake[i - 1] ;
-        stake[i - 1] = swap ; 
+        swap = stake_a[i]; 
+        stake_a[i] = stake_a[i - 1] ;
+        stake_a[i - 1] = swap ; 
         i--;
     }
-     if (flag == 3)
+    ft_printf("rra\n");
+}
+
+void rrb(int *stake_b , int  size)
+{
+   //Shift down all elements of stack a by 1.
+   //The last element becomes the first one
+    int i;
+    int swap;
+
+    i = size -1;
+    while(i > 0 )
     {
-        return  ; 
+        swap = stake_b[i]; 
+        stake_b[i] = stake_b[i - 1] ;
+        stake_b[i - 1] = swap ; 
+        i--;
     }
-     if (flag)
-        ft_printf("rra\n");
-    else
-        ft_printf("rrb\n");
+    ft_printf("rrb\n");
+}
+
+int  pa(int **stake_a , int **stake_b , int *size_a , int *size_b)
+{
+    //Take the first element at the top of stake_b and put it at the top of stake_a.
+    //Do nothing if stake_pop is empty
+    int *new_stake_a; 
+    int *new_stake_b;
+
+    if (!*size_b)
+        return 1 ;
+    new_stake_a = malloc(sizeof(int) * ( *size_a + 1 ));
+    new_stake_b = malloc(sizeof(int) * ( *size_b - 1 ));
+    ft_memmove(new_stake_a , *stake_a  , (*size_a )*sizeof(int)) ;
+    ft_memmove(new_stake_b , *stake_b , (*size_b -1)*sizeof(int) ) ;
+    new_stake_a[*size_a] = (*stake_b)[*size_b -1 ] ; 
+    free(*stake_a);
+    free(*stake_b);
+    *stake_a = new_stake_a ; 
+    *stake_b = new_stake_b ; 
+    *size_a  = *size_a + 1; 
+    *size_b  = *size_b - 1; 
+    ft_printf("pa\n") ; 
+    return 0;
+}
+int  pb(int **stake_a , int **stake_b , int *size_a , int *size_b )
+{
+    //Take the first element at the top of stake_b and put it at the top of stake_b.
+    //Do nothing if stake_a is empty
+    int *new_stake_a; 
+    int *new_stake_b;
+
+    if (!*size_a)
+        return 1 ;
+    new_stake_a = malloc(sizeof(int) * ( *size_a - 1 ) );
+    new_stake_b = malloc(sizeof(int) * ( *size_b + 1 ) );
+    ft_memmove(new_stake_a , *stake_a , (*size_a - 1 )*sizeof(int));
+    ft_memmove(new_stake_b , *stake_b , (*size_b)*sizeof(int) );
+    new_stake_b[*size_b] = (*stake_a)[*size_a -1 ]; 
+    free(*stake_a);
+    free(*stake_b);
+    *stake_a = new_stake_a; 
+    *stake_b  = new_stake_b; 
+    *size_a  = *size_a - 1; 
+    *size_b   = *size_b + 1; 
+    ft_printf("pb\n"); 
+    return 0;
 }

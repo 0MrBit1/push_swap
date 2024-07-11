@@ -1,6 +1,20 @@
 #include "../include/push_swap.h"
 
-int overflow_checker(char *number)
+int  free_array(char **array)
+{
+    int i;
+
+    i = 0;
+    while(array[i])
+    {
+        free(array[i]);
+        i++;
+    }
+    free(array);
+    return 1 ;
+}
+
+static int overflow_checker(char *number)
 {
     char  *int_min;
     int   i;
@@ -24,7 +38,7 @@ int overflow_checker(char *number)
     return 0; 
 } 
 
-int digit_checker(char *numbers  ) 
+static int digit_checker(char *numbers  ) 
 {
     int j;
     int sign;
@@ -42,4 +56,33 @@ int digit_checker(char *numbers  )
         j++;
     }
     return 0;
+}
+
+int calculate_numbers(char **argv)
+{
+    int     len;
+    int     i;
+    int     j;
+    char    **numbers;
+
+    i = 1;
+    j = 0;
+    len = 0; 
+    while(argv[i])
+    {
+        numbers = ft_split(argv[i], ' '); 
+        while(numbers[j])
+        { 
+            if (digit_checker(numbers[j]) && free_array(numbers))
+                return 0;
+            if (overflow_checker(numbers[j]) &&  free_array(numbers))
+                return 0;
+            len++;
+            j++;
+        }
+        free_array(numbers);
+        j = 0 ; 
+        i++;
+    }
+    return len;
 }
