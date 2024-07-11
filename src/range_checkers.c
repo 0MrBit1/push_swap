@@ -44,9 +44,7 @@ int  check_if_inferior(int stake_top , int *sorted_array , int *start_end)
     while(start < end)
     {
         if (stake_top == sorted_array[start] )
-        {
             return  1;
-        }
         start++;
     }
 
@@ -65,4 +63,3 @@ int check_if_in(int stake_top , int *sorted_array , int *start_end , int sorted_
         return 1 ;
     return 0 ;
 }
-        

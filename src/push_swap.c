@@ -39,12 +39,14 @@ int begin_checks(int stake_top , int *sorted_array , int *start_end , int sorted
     while(i < 3)
     {
         if (status[i])
-            return i;
+            break;
         i++;
     }
+    return i;
+
 }
 
-int dispatcher(int status , int **stake_b , int **stake_a , int *start_end , int *size_push_pop)
+void dispatcher(int status , int **stake_b , int **stake_a , int *start_end , int *size_push_pop)
 {
 
     if (!status )
@@ -74,35 +76,34 @@ int main (int argc , char **argv)
     int *stake_a; 
     int *stake_b;
     int *buble_sorted; 
-    int len_init_a_b[3];
+    int lens[3];
     int start_end[2];
     int status ; 
 
     if (argc < 2 )
         ft_printf("no arguments ,pleave give some arguments.\n") ;
-    len_init_a_b[0] = calculate_numbers(argv) ; 
-    len_init_a_b[1] = len_init_a_b[0]; 
-    len_init_a_b[2] = 0; 
-    stake_a = create_stake_a(argv , len_init_a_b[0]);
+    lens[0] = calculate_numbers(argv) ; 
+    lens[1] = lens[0]; 
+    lens[2] = 0; 
+    stake_a = create_stake_a(argv , lens[0]);
     stake_b = NULL ;
     if (!stake_a)
     {
         ft_printf("there was an error creating the stake .\n");
         return 1;
     }
-    buble_sorted = create_stake_a(argv , len_init_a_b[0]);
-    bubble_sort(buble_sorted , len_init_a_b[0]);
-    range_decider(len_init_a_b[0] , start_end) ; 
-    
-    while (len_init_a_b[1])
+    buble_sorted = create_stake_a(argv , lens[0]);
+    bubble_sort(buble_sorted , lens[0]);
+    range_decider(lens[0] , start_end) ; 
+    while (lens[1])
     {
-        status = begin_checks( stake_a[   len_init_a_b[1] - 1      ] , buble_sorted , start_end , len_init_a_b[0]);
-        dispatcher(status , &stake_b , &stake_a , start_end ,  len_init_a_b ) ;
+        status = begin_checks( stake_a[   lens[1] - 1      ] , buble_sorted , start_end , lens[0]);
+        dispatcher(status , &stake_b , &stake_a , start_end ,  lens ) ;
     }
  
     int i = 0 ; 
 
-    while (i < len_init_a_b[2] )
+    while (i < lens[2] )
     {
         ft_printf("%d\n" , stake_b[i] ) ; 
         i ++;
