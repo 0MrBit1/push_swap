@@ -48,8 +48,7 @@ int  check_if_inferior(int stake_top , int *sorted_array , int *start_end)
         start++;
     }
 
-    return 0 ; 
-
+    return 0 ;
 }
 
 int check_if_in(int stake_top , int *sorted_array , int *start_end , int sorted_array_len)

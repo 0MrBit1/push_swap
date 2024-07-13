@@ -1,6 +1,5 @@
 #include "../include/push_swap.h"
 
-
 void ra(int *stake_a , int size)
 {
     //Shift up all elements of stack a by 1.
@@ -8,12 +7,12 @@ void ra(int *stake_a , int size)
     int i;
     int swap;
 
-    i = 0 ;
+    i = 0;
     while(i < size -1 )
     {
         swap = stake_a[i]; 
-        stake_a[i] = stake_a[i + 1] ;
-        stake_a[i + 1] = swap ; 
+        stake_a[i] = stake_a[i + 1];
+        stake_a[i + 1] = swap; 
         i++;
     }
     ft_printf("ra\n") ; 

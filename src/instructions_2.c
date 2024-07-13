@@ -10,7 +10,7 @@ int  sa(int *stake_a, int size)
     swap = stake_a[size - 1];
     stake_a[size - 1] = stake_a[size - 2]; 
     stake_a[size - 2] = swap;
-    ft_printf("sa\n") ; 
+    ft_printf("sa\n"); 
     return 0;
 }
 int  sb(int *stake_b , int size)
