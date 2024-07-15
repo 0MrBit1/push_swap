@@ -67,7 +67,10 @@ void  push_swap(int *lens  , char **argv , int *start_end )
     stake_a_b[1] = &stake_b; 
 
     build_stake_b(stake_a_b, lens , buble_sorted , start_end);
-    build_stake_a(stake_a_b , lens , buble_sorted );
+    build_stake_a(stake_a_b , lens , buble_sorted);
+    free(stake_a);
+    free(stake_b) ;
+    free(buble_sorted);
 }
 
 int main (int argc , char **argv)
