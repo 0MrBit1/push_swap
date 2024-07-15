@@ -66,8 +66,8 @@ void rrb(int *stake_b , int  size )
     while( i < size  - 1 )
     {
         swap = stake_b[i]; 
-        stake_b[i] = stake_b[i + 1] ;
-        stake_b[i + 1] = swap ; 
+        stake_b[i] = stake_b[i + 1];
+        stake_b[i + 1] = swap;
         i++;
     }
     ft_printf("rrb\n");

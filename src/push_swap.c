@@ -1,25 +1,21 @@
 #include "../include/push_swap.h"
 
-
 void reverse_the_array(int **stake_a , int len)
 {
-
-    int *new_array ;
+    int *new_array;
     int i ;
 
-
-    new_array = malloc(sizeof(int)*len) ; 
-    i = 0 ; 
-    len-- ; 
-
+    new_array = malloc(sizeof(int)*len); 
+    i = 0; 
+    len--; 
     while (len >= 0)
     {
-        new_array[i]   =  (*stake_a)[len] ; 
+        new_array[i]   =  (*stake_a)[len]; 
         i++;
         len--;
     }
-    free(*stake_a) ; 
-    *stake_a = new_array ; 
+    free(*stake_a); 
+    *stake_a = new_array; 
 }
 
 int *create_stake_a(char **argv , int len)
@@ -39,7 +35,7 @@ int *create_stake_a(char **argv , int len)
         numbers = ft_split(argv[i[0]] , ' ');
         while(numbers[i[2]])
         { 
-            stake_a[i[1]++] = ft_atoi(numbers[i[2]]) ; 
+            stake_a[i[1]++] = ft_atoi(numbers[i[2]]); 
             i[2]++;
         }
         free_array(numbers);
@@ -52,11 +48,11 @@ int *create_stake_a(char **argv , int len)
 int begin_checks(int stake_top , int *sorted_array , int *start_end , int sorted_array_len )
 {
     int status[3];
-    int i ;
+    int i;
 
-    i = 0 ;
+    i = 0;
     status[0] = check_if_superior(stake_top , sorted_array , start_end ,  sorted_array_len );
-    status[1] = check_if_inferior(stake_top , sorted_array , start_end );
+    status[1] = check_if_inferior(stake_top , sorted_array , start_end);
     status[2] = check_if_in(stake_top , sorted_array , start_end ,  sorted_array_len); 
     while(i < 3)
     {
@@ -65,7 +61,6 @@ int begin_checks(int stake_top , int *sorted_array , int *start_end , int sorted
         i++;
     }
     return i;
-
 }
 
 void dispatcher(int status , int **stake_a , int **stake_b , int *start_end , int *lens)
@@ -86,44 +81,52 @@ void dispatcher(int status , int **stake_a , int **stake_b , int *start_end , in
         start_end[0]++;
         start_end[1]++;
     }
-
 }
 
-int main (int argc , char **argv)
+void initialize_lens(int *lens , char **argv)
+{
+    lens[0] = calculate_numbers(argv); 
+    lens[1] = lens[0]; 
+    lens[2] = 0; 
+}
+
+void push_swap(int *lens  , char **argv , int *start_end )
 {
     int *stake_a; 
     int *stake_b;
-    int *buble_sorted; 
-    int lens[3];
-    int start_end[2];
-    int status; 
-    int i;
+    int *buble_sorted;
 
-    if (argc < 2 )
-        ft_printf("no arguments ,pleave give some arguments.\n") ;
-    lens[0] = calculate_numbers(argv) ; 
-    lens[1] = lens[0]; 
-    lens[2] = 0; 
     stake_a = create_stake_a(argv , lens[0]);
-    stake_b = NULL ;
-    i = 0 ;
+    stake_b = NULL;
     if (!stake_a)
     {
         ft_printf("there was an error creating the stake .\n");
         return 1;
     }
-    reverse_the_array(&stake_a , lens[0]) ;
-    i = 0 ;
+    reverse_the_array(&stake_a , lens[0]);
     buble_sorted = create_stake_a(argv , lens[0]);
     bubble_sort(buble_sorted , lens[0]);
-    range_decider(lens[0] , start_end) ; 
+    build_stake_b(stake_a , stake_b , lens , buble_sorted , start_end);
+
+}
+
+int build_stake_b(int *stake_a , int *stake_b , int *lens , int *buble_sorted , int *start_end)
+{
+    int status;
+
     while (lens[1])
     {
         status = begin_checks( stake_a[   lens[1] - 1      ] , buble_sorted , start_end , lens[0]);
-        dispatcher(status , &stake_a , &stake_b , start_end ,  lens ) ;
+        dispatcher(status , &stake_a , &stake_b , start_end ,  lens );
     }
 
-    i  = lens[0] - 1 ; 
+}
+
+int build_stake_a(int *stake_a , int *stake_b , int *lens , int *bubble_sorted  , int *buble_sorted )
+{
+    int i ;
+
+    i = lens[0] - 1;
 
     while (lens[2])
     {
@@ -137,5 +140,21 @@ int main (int argc , char **argv)
             rb(stake_b , lens[2]); 
         }
     }
+}
+
+int main (int argc , char **argv)
+{
+    int lens[3];
+    int start_end[2];
+  
+    if (argc < 2 )
+    {
+        ft_printf("no arguments ,pleave give some arguments.\n") ;
+        return 1;
+    }
+    initialize_lens(lens , argv); 
+    range_decider(lens[0] , start_end); 
+    push_swap(lens  , argv , start_end ) ; 
+
     return 0;
 }

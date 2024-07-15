@@ -15,7 +15,7 @@ void rr(int *stake_a , int *stake_b , int size_a , int size_b)
     rb(stake_b ,  size_b);
     ft_printf("rr\n");
 }
-void rrr (int *stake_a , int *stake_b , int size_a , int size_b)
+void rrr(int *stake_a , int *stake_b , int size_a , int size_b)
 {
     //rra and rrb at the same time.
     rra(stake_a ,   size_a);
