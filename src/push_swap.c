@@ -95,6 +95,7 @@ void push_swap(int *lens  , char **argv , int *start_end )
     int *stake_a; 
     int *stake_b;
     int *buble_sorted;
+    int *stake_a_b[2];
 
     stake_a = create_stake_a(argv , lens[0]);
     stake_b = NULL;
@@ -106,13 +107,21 @@ void push_swap(int *lens  , char **argv , int *start_end )
     reverse_the_array(&stake_a , lens[0]);
     buble_sorted = create_stake_a(argv , lens[0]);
     bubble_sort(buble_sorted , lens[0]);
-    build_stake_b(stake_a , stake_b , lens , buble_sorted , start_end);
+    stake_a_b[0] = stake_a; 
+    stake_a_b[1] = stake_b; 
+
+    build_stake_b(stake_a_b, lens , buble_sorted , start_end);
 
 }
 
-int build_stake_b(int *stake_a , int *stake_b , int *lens , int *buble_sorted , int *start_end)
+int build_stake_b(int **stake_a_b  , int *lens , int *buble_sorted , int *start_end)
 {
-    int status;
+    int  status;
+    int *stake_a ;
+    int *stake_b ;
+
+    stake_a = stake_a_b[0] ; 
+    stake_b = stake_a_b[1]; 
 
     while (lens[1])
     {
@@ -122,9 +131,14 @@ int build_stake_b(int *stake_a , int *stake_b , int *lens , int *buble_sorted , 
 
 }
 
-int build_stake_a(int *stake_a , int *stake_b , int *lens , int *bubble_sorted  , int *buble_sorted )
+int build_stake_a(int **stake_a_b , int *lens , int *bubble_sorted  , int *buble_sorted )
 {
     int i ;
+    int *stake_a ;
+    int *stake_b ; 
+
+    stake_a  = stake_a_b[0]; 
+    stake_b =  stake_a_b[1];
 
     i = lens[0] - 1;
 
