@@ -18,11 +18,11 @@ void reverse_the_array(int **stake_a , int len)
     *stake_a = new_array; 
 }
 
-void build_stake_a(int **stake_a_b , int *lens , int *buble_sorted )
+void build_stake_a(int ***stake_a_b , int *lens , int *buble_sorted )
 {
     int i ;
-    int *stake_a ;
-    int *stake_b ; 
+    int **stake_a ;
+    int **stake_b ; 
 
     stake_a  = stake_a_b[0]; 
     stake_b =  stake_a_b[1];
@@ -31,32 +31,32 @@ void build_stake_a(int **stake_a_b , int *lens , int *buble_sorted )
 
     while (lens[2])
     {
-        if (stake_b[   lens[2] - 1 ]  ==  buble_sorted[i]    )
+        if ((*stake_b)[   lens[2] - 1 ]  ==  buble_sorted[i]    )
         {   
-            pa(&stake_a , &stake_b , &(lens[1]) , &(lens[2]));
+            pa(stake_a , stake_b , &(lens[1]) , &(lens[2]));
             i--; 
         }
         else
         {  
-            rb(stake_b , lens[2]); 
+            rb(*stake_b , lens[2]);  
         }
     }
 }
 
 
-void build_stake_b(int **stake_a_b  , int *lens , int *buble_sorted , int *start_end)
+void build_stake_b(int ***stake_a_b  , int *lens , int *buble_sorted , int *start_end)
 {
     int  status;
-    int *stake_a ;
-    int *stake_b ;
+    int **stake_a;
+    int **stake_b;
 
     stake_a = stake_a_b[0] ; 
     stake_b = stake_a_b[1]; 
 
     while (lens[1])
     {
-        status = begin_checks( stake_a[   lens[1] - 1      ] , buble_sorted , start_end , lens[0]);
-        dispatcher(status , &stake_a , &stake_b , start_end ,  lens );
+        status = begin_checks( (*stake_a)[   lens[1] - 1      ] , buble_sorted , start_end , lens[0]);
+        dispatcher(status , stake_a , stake_b , start_end ,  lens );
     }
 
 }

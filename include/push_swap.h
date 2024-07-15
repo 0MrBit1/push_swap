@@ -41,9 +41,9 @@ int free_array(char **array)  ;
 
 void reverse_the_array(int **stake_a , int len) ; 
 
-void  build_stake_a(int **stake_a_b , int *lens   , int *buble_sorted ) ; 
+void  build_stake_a(int ***stake_a_b , int *lens   , int *buble_sorted ) ; 
 
-void build_stake_b(int **stake_a_b  , int *lens , int *buble_sorted , int *start_end) ; 
+void build_stake_b(int ***stake_a_b  , int *lens , int *buble_sorted , int *start_end) ; 
 
 int *create_stake_a(char **argv , int len) ; 
 

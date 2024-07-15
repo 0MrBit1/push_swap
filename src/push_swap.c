@@ -20,6 +20,7 @@ int begin_checks(int stake_top , int *sorted_array , int *start_end , int sorted
 
 void dispatcher(int status , int **stake_a , int **stake_b , int *start_end , int *lens)
 {
+
     // 0 means superior , 1 means inferirior  and 2 means it is in the range  . 
     if (!status) // 0 
         ra(*stake_a , lens[1] ) ; 
@@ -50,7 +51,7 @@ void  push_swap(int *lens  , char **argv , int *start_end )
     int *stake_a; 
     int *stake_b;
     int *buble_sorted;
-    int *stake_a_b[2];
+    int **stake_a_b[2];
 
     stake_a = create_stake_a(argv , lens[0]);
     stake_b = NULL;
@@ -62,10 +63,11 @@ void  push_swap(int *lens  , char **argv , int *start_end )
     reverse_the_array(&stake_a , lens[0]);
     buble_sorted = create_stake_a(argv , lens[0]);
     bubble_sort(buble_sorted , lens[0]);
-    stake_a_b[0] = stake_a; 
-    stake_a_b[1] = stake_b; 
+    stake_a_b[0] = &stake_a; 
+    stake_a_b[1] = &stake_b; 
 
-    build_stake_b(stake_a_b, lens , buble_sorted , start_end); 
+    build_stake_b(stake_a_b, lens , buble_sorted , start_end);
+    build_stake_a(stake_a_b , lens , buble_sorted );
 }
 
 int main (int argc , char **argv)
