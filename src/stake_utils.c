@@ -6,7 +6,7 @@
 /*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:55:06 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 15:51:14 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/16 17:17:17 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void build_stake_b(int ***stake_a_b, int *lens, int *buble_sorted, int *start_en
     while (lens[1])
     {
         status = begin_checks((*stake_a)[lens[1] - 1], buble_sorted, start_end, lens[0]);
-        dispatcher(status, stake_a, stake_b, start_end, lens  );
+        dispatcher(status, stake_a, stake_b, start_end, lens , buble_sorted );
     }
 }
 

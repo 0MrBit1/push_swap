@@ -6,7 +6,7 @@
 /*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 06:14:50 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 15:59:06 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/16 17:16:06 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void build_stake_b(int ***stake_a_b  , int *lens , int *buble_sorted , int *star
 
 int *create_stake_a(char **argv , int len) ; 
 
-void dispatcher(int status , int **stake_a , int **stake_b , int *start_end , int *lens) ; 
+void dispatcher(int status , int **stake_a , int **stake_b , int *start_end , int *lens , int *sorted_array) ; 
 
 int begin_checks(int stake_top , int *sorted_array , int *start_end , int sorted_array_len ) ; 
 

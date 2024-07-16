@@ -6,7 +6,7 @@
 /*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:54:49 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 16:05:28 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/16 17:25:00 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,45 @@ int begin_checks(int stake_top, int *sorted_array, int *start_end, int sorted_ar
     return i;
 }
 
-void dispatcher(int status, int **stake_a, int **stake_b, int *start_end , int *lens )
+int check_for_in_or_inf(int *stake_a , int *sorted_array ,  int *start_end , int *lens )
+{
+    int i ; 
+    int inf ; 
+    int in ; 
+
+    i  = 0 ; 
+
+    while(i < lens[0])
+    {
+        inf = check_if_inferior(stake_a[i], sorted_array    , start_end ) ; 
+        in  = check_if_in(stake_a[i] , sorted_array , start_end   , lens[0] ) ; 
+        if (inf || in)
+        {
+            return i ; 
+        }
+        i++ ; 
+
+    }
+    return 0 ; 
+    
+}
+
+void dispatcher(int status, int **stake_a, int **stake_b, int *start_end , int *lens  , int *sorted_array)
 {
     // 0 means superior , 1 means inferirior  and 2 means it is in the range  .
-    //int in_range_or_inf; 
-    //int ra_or_rra ;
-    if (!status) //0
-         ra(*stake_a , lens[1]);   
+    int index ;
+    int ra_or_rra ; 
+    
+    if (!status)
+    {
+        index = check_for_in_or_inf(*stake_a , sorted_array ,  start_end , lens ) ; 
+        ra_or_rra = rotate_or_reverse(*stake_a, lens[1], (*stake_a)[index]) ; 
+
+        if (ra_or_rra)
+            rra(*stake_a , lens[1]);   
+        else
+            ra(*stake_a , lens[1]);   
+    }  
     else if (status == 1) // 1
     {
         pb(stake_a, stake_b, &(lens[1]), &(lens[2]));
