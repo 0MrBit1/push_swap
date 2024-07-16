@@ -6,7 +6,7 @@
 /*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:54:59 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 11:28:02 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/16 16:27:24 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void range_decider(int size, int *start_end)
         range = 10;
     else 
         range = 5;
-
     start_end[0] = 0;
     start_end[1] = range;
 }

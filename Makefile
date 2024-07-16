@@ -54,9 +54,11 @@ src/basic_tests.o: src/basic_tests.c
 
 # Clean up generated files
 clean:
+	rm -f $(OBJ)
+
+fclean:
 	rm -f $(OBJ) $(EXEC)
 
 # Phony targets
-.PHONY: all clean
 
 
