@@ -6,7 +6,7 @@
 /*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:32:06 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 16:40:13 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/16 16:41:49 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void check_if_deplicated(int *stake_a , int *lens )
         {
             if ( (stake_a[i] ==  stake_a[j] )   && i != j  )
             {
+                write(2 , "Error\n" , 6) ; 
                 free(stake_a);
                 exit(1) ;    
             }    
