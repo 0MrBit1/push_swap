@@ -6,7 +6,7 @@
 /*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:32:06 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 16:02:23 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/16 16:12:46 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void check_if_sorted(int *stake_a , int *sorted_array , int *lens)
     while (i <= lens[0])
     {
         if (stake_a[i] != sorted_array[i])
-        {
             return;
-        }
         i++;    
     } 
     free(stake_a);
