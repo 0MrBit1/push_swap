@@ -20,10 +20,9 @@ int begin_checks(int stake_top , int *sorted_array , int *start_end , int sorted
 
 void dispatcher(int status , int **stake_a , int **stake_b , int *start_end , int *lens)
 {
-
     // 0 means superior , 1 means inferirior  and 2 means it is in the range  . 
     if (!status) // 0 
-        ra(*stake_a , lens[1] ) ; 
+        ra(*stake_a , lens[1] ); 
     else if (status == 1) // 1
     {
         pb(stake_a , stake_b , &(lens[1]) , &(lens[2])); 

@@ -1,5 +1,27 @@
 #include "../include/push_swap.h"
 
+int rotate_or_reverse(int *stake_b , int size_b , int search_for)
+{
+    int i; 
+    int distance_from_top;
+    int distance_from_bot;
+
+    i = 0;
+
+    while (i < size_b)
+    {
+        if (stake_b[i] == search_for)
+            break; 
+        i++;
+    }
+    distance_from_bot = i; 
+    distance_from_top = size_b - ( i + 1 ); 
+    if (distance_from_top <= distance_from_bot)
+        return 1; //ra
+    else
+        return 0; //rra
+}
+
 void reverse_the_array(int **stake_a , int len)
 {
     int *new_array;
@@ -22,7 +44,8 @@ void build_stake_a(int ***stake_a_b , int *lens , int *buble_sorted )
 {
     int i ;
     int **stake_a ;
-    int **stake_b ; 
+    int **stake_b ;
+    int ra_or_rra  ;  
 
     stake_a  = stake_a_b[0]; 
     stake_b =  stake_a_b[1];
@@ -37,12 +60,16 @@ void build_stake_a(int ***stake_a_b , int *lens , int *buble_sorted )
             i--; 
         }
         else
-        {  
-            rb(*stake_b , lens[2]);  
+        { 
+            ra_or_rra = rotate_or_reverse(*stake_b , lens[2] , buble_sorted[i] ) ; 
+            if (ra_or_rra)
+               rb(*stake_b , lens[2]);
+            else
+                rrb(*stake_b , lens[2]);
+
         }
     }
 }
-
 
 void build_stake_b(int ***stake_a_b  , int *lens , int *buble_sorted , int *start_end)
 {
@@ -60,7 +87,6 @@ void build_stake_b(int ***stake_a_b  , int *lens , int *buble_sorted , int *star
     }
 
 }
-
 
 int *create_stake_a(char **argv , int len)
 {
