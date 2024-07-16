@@ -6,7 +6,7 @@
 /*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:55:06 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 11:58:33 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/16 15:51:14 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,11 @@ void build_stake_a(int ***stake_a_b, int *lens, int *buble_sorted)
     int i;
     int **stake_a;
     int **stake_b;
-    int ra_or_rra;
+    int rb_or_rrb;
 
     stake_a = stake_a_b[0];
     stake_b = stake_a_b[1];
-
     i = lens[0] - 1;
-
     while (lens[2])
     {
         if ((*stake_b)[lens[2] - 1] == buble_sorted[i])
@@ -73,8 +71,8 @@ void build_stake_a(int ***stake_a_b, int *lens, int *buble_sorted)
         }
         else
         {
-            ra_or_rra = rotate_or_reverse(*stake_b, lens[2], buble_sorted[i]);
-            if (ra_or_rra)
+            rb_or_rrb = rotate_or_reverse(*stake_b, lens[2], buble_sorted[i]);
+            if (rb_or_rrb)
                 rb(*stake_b, lens[2]);
             else
                 rrb(*stake_b, lens[2]);
@@ -94,7 +92,7 @@ void build_stake_b(int ***stake_a_b, int *lens, int *buble_sorted, int *start_en
     while (lens[1])
     {
         status = begin_checks((*stake_a)[lens[1] - 1], buble_sorted, start_end, lens[0]);
-        dispatcher(status, stake_a, stake_b, start_end, lens ,buble_sorted );
+        dispatcher(status, stake_a, stake_b, start_end, lens  );
     }
 }
 
@@ -124,3 +122,4 @@ int *create_stake_a(char **argv, int len)
     }
     return stake_a;
 }
+

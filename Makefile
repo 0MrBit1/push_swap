@@ -2,10 +2,10 @@
 CFLAGS = -Wall -Wextra -fsanitize=leak -g 
 
 # Source files
-SRC = src/arguments_checker.c  src/bubble_sort.c src/instruction_repeat.c src/instructions_1.c src/instructions_2.c src/push_swap.c src/range_checkers.c src/stake_utils.c
+SRC = src/arguments_checker.c  src/bubble_sort.c src/instruction_repeat.c src/instructions_1.c src/instructions_2.c src/push_swap.c src/range_checkers.c src/stake_utils.c src/basic_tests.c
 
 # Object files
-OBJ = src/arguments_checker.o  src/bubble_sort.o src/instruction_repeat.o src/instructions_1.o src/instructions_2.o src/push_swap.o src/range_checkers.o src/stake_utils.o
+OBJ = src/arguments_checker.o  src/bubble_sort.o src/instruction_repeat.o src/instructions_1.o src/instructions_2.o src/push_swap.o src/range_checkers.o src/stake_utils.o src/basic_tests.o
 
 # Library path
 LIB_PATH = lib
@@ -48,6 +48,9 @@ src/range_checkers.o: src/range_checkers.c
 
 src/stake_utils.o: src/stake_utils.c
 	$(CC) $(CFLAGS) -c src/stake_utils.c -o src/stake_utils.o
+
+src/basic_tests.o: src/basic_tests.c
+	$(CC) $(CFLAGS) -c src/basic_tests.c -o src/basic_tests.o
 
 # Clean up generated files
 clean:
