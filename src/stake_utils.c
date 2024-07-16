@@ -6,13 +6,13 @@
 /*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:55:06 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 17:17:17 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/16 17:44:30 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int rotate_or_reverse(int *stake_b, int size_b, int search_for)
+int rotate_or_reverse(int *stake, int size, int search_for)
 {
     int i;
     int distance_from_top;
@@ -20,14 +20,14 @@ int rotate_or_reverse(int *stake_b, int size_b, int search_for)
 
     i = 0;
 
-    while (i < size_b)
+    while (i < size)
     {
-        if (stake_b[i] == search_for)
+        if (stake[i] == search_for)
             break;
         i++;
     }
     distance_from_bot = i;
-    distance_from_top = size_b - (i + 1);
+    distance_from_top = size - (i + 1);
     if (distance_from_top <= distance_from_bot)
         return 1; // ra
     else
@@ -92,7 +92,7 @@ void build_stake_b(int ***stake_a_b, int *lens, int *buble_sorted, int *start_en
     while (lens[1])
     {
         status = begin_checks((*stake_a)[lens[1] - 1], buble_sorted, start_end, lens[0]);
-        dispatcher(status, stake_a, stake_b, start_end, lens , buble_sorted );
+        dispatcher(status, stake_a, stake_b, start_end, lens  );
     }
 }
 

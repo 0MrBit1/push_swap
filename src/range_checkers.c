@@ -6,7 +6,7 @@
 /*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:54:59 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 16:27:24 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/16 17:52:06 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ void range_decider(int size, int *start_end)
     if (size >= 400)
         range = 35;
     else if (size >= 200)
-        range = 15;
+        range = 18;
     else if (size >= 100)
-        range = 10;
+        range = 9;
     else 
         range = 5;
+    
     start_end[0] = 0;
     start_end[1] = range;
 }
+
 
 int check_if_superior(int stake_top, int *sorted_array, int *start_end, int sorted_array_len)
 {
