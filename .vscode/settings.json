@@ -1,12 +1,8 @@
 {
-    "files.associations": {
-        "push_swap.h": "c",
-        "stdlib.h": "c"
-    }
-
-    ,
-        "[c]": {
-          "editor.defaultFormatter": "keyhr.42-c-format"
-        }
-      
+  "editor.tabSize": 4,
+  "editor.insertSpaces": false,
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [80],
+  "42header.email": "marvin@42.fr"
+   
 }

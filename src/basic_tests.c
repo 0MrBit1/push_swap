@@ -12,45 +12,44 @@
 
 #include "../include/push_swap.h"
 
-void check_if_sorted(int *stake_a , int *sorted_array , int *lens)
+void	check_if_sorted(int *stake_a, int *sorted_array, int *lens)
 {
-    int i;
+	int	i;
 
-    i = 0; 
-    while (i <= lens[0])
-    {
-        if (stake_a[i] != sorted_array[i])
-            return;
-        i++;    
-    } 
-    free(stake_a);
-    free(sorted_array);
-    exit(1) ; 
+	i = 0;
+	while (i <= lens[0])
+	{
+		if (stake_a[i] != sorted_array[i])
+			return ;
+		i++;
+	}
+	free(stake_a);
+	free(sorted_array);
+	exit(1);
 }
 
-void check_if_deplicated(int *stake_a , int *lens )
+void	check_if_deplicated(int *stake_a, int *lens)
 {
-    int number ; 
-    int i ;
-    int j ;
+	int	number;
+	int	i;
+	int	j;
 
-    i = 0;
-    j = 0;
- 
-    while (i < lens[0] )
-    {
-        number = stake_a[i] ;
-        while (j < lens[0] )
-        {
-            if ( (stake_a[i] ==  stake_a[j] )   && i != j  )
-            {
-                write(2 , "Error\n" , 6) ; 
-                free(stake_a);
-                exit(1) ;    
-            }    
-            j++; 
-        }
-        j = 0; 
-        i++;
-    }
+	i = 0;
+	j = 0;
+	while (i < lens[0])
+	{
+		number = stake_a[i];
+		while (j < lens[0])
+		{
+			if ((stake_a[i] == stake_a[j]) && i != j)
+			{
+				write(2, "Error\n", 6);
+				free(stake_a);
+				exit(1);
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 }

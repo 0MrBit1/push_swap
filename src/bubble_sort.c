@@ -23,9 +23,9 @@ static void	swap_values(int *addr1, int *addr2)
 
 void	bubble_sort(int *stake, int size)
 {
-	int i;
-	int j;
-	int min;
+	int	i;
+	int	j;
+	int	min;
 
 	i = 0;
 	j = 0;

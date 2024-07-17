@@ -72,10 +72,10 @@ static int	digit_checker(char *numbers)
 
 int	calculate_numbers(char **argv)
 {
-	int len;
-	int i;
-	int j;
-	char **numbers;
+	int		len;
+	int		i;
+	int		j;
+	char	**numbers;
 
 	i = 1;
 	j = 0;
