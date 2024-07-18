@@ -51,35 +51,33 @@ void	check_if_deplicated(int *stake_a, int *lens)
 		i++;
 	}
 }
-int handle_two(int *stake_a, int *lens)
-{
 
+int	handle_two(int *stake_a, int *lens)
+{
 	if (lens[1] == 2)
-	{ 
+	{
 		if ((stake_a)[1] > (stake_a)[0])
 			sa(stake_a, lens[1]);
-		return 1;
+		return (1);
 	}
-	return 0;
+	return (0);
 }
-void pope(int **stake_a, int **stake_b, int *lens, int small_num)
+
+void	pope(int **stake_a, int **stake_b, int *lens, int small_num)
 {
-	int small_index;
-	int i ;
+	int	small_index;
+	int	i;
 
 	i = 0;
-	
-
 	while (1)
 	{
 		if (small_num == (*stake_a)[i])
 		{
-			small_index = i ; 
-			break;
+			small_index = i;
+			break ;
 		}
 		i++;
 	}
-
 	while (small_num != (*stake_a)[lens[1] - 1])
 	{
 		if (small_index >= lens[1] / 2)
@@ -89,21 +87,22 @@ void pope(int **stake_a, int **stake_b, int *lens, int small_num)
 	}
 	pb(stake_a, stake_b, &(lens[1]), &(lens[2]));
 }
-void  sort_five_args(int **stake_a , int **stake_b , int *lens)
-{
-	int large_num;
-	int *buble_sorted;
 
-	if(handle_two(*stake_a , lens))
-		return ; 
-	buble_sorted = malloc(sizeof(int)* (lens[0]) ) ; 
+void	sort_five_args(int **stake_a, int **stake_b, int *lens)
+{
+	int	large_num;
+	int	*buble_sorted;
+
+	if (handle_two(*stake_a, lens))
+		return ;
+	buble_sorted = malloc(sizeof(int) * (lens[0]));
 	while (lens[1] > 3)
 	{
-		ft_memmove(buble_sorted , *stake_a , sizeof(int)*(lens[1]));
+		ft_memmove(buble_sorted, *stake_a, sizeof(int) * (lens[1]));
 		bubble_sort(buble_sorted, lens[1]);
 		pope(stake_a, stake_b, lens, buble_sorted[0]);
 	}
-	ft_memmove(buble_sorted , *stake_a , sizeof(int)*(lens[1])) ;
+	ft_memmove(buble_sorted, *stake_a, sizeof(int) * (lens[1]));
 	bubble_sort(buble_sorted, lens[1]);
 	large_num = buble_sorted[lens[1] - 1];
 	if ((*stake_a)[lens[1] - 1] == large_num)
