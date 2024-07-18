@@ -6,7 +6,7 @@
 /*   By: acharik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:32:06 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/18 03:59:21 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/18 04:01:13 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ int handle_two(int *stake_a, int *lens)
 		return 1;
 	}
 	return 0;
-
-	
 }
 void pope(int **stake_a, int **stake_b, int *lens, int small_num)
 {
