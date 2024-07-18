@@ -88,6 +88,15 @@ void	build_stake_b(int ***stake_a_b, int *lens, int *buble_sorted,
 
 	stake_a = stake_a_b[0];
 	stake_b = stake_a_b[1];
+	 
+	if (lens[0] <= 5 )
+	{
+		sort_five_args(stake_a , stake_b , lens) ; 
+		free(*stake_a) ; 
+		free(*stake_b) ;
+		free(buble_sorted) ; 
+		exit(1); 
+	}
 	while (lens[1])
 	{
 		status = begin_checks((*stake_a)[lens[1] - 1], buble_sorted, start_end,

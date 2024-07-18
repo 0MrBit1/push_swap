@@ -55,3 +55,4 @@ int rotate_or_reverse(int *stake, int size, int search_for) ;
 
 void check_if_sorted(int *stake_a , int *sorted_array , int *lens) ; 
 void check_if_deplicated(int *stake_a , int *lens ) ; 
+void  sort_five_args(int **stake_a , int **stake_b , int *lens) ; 
