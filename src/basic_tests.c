@@ -6,7 +6,7 @@
 /*   By: acharik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:32:06 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/18 04:01:13 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/18 04:05:37 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,5 @@ void  sort_five_args(int **stake_a , int **stake_b , int *lens)
 		sa(*stake_a, lens[1]);
 	pa(stake_a, stake_b, &(lens[1]), &(lens[2]));
 	pa(stake_a, stake_b, &(lens[1]), &(lens[2]));
+	free(bubble_sort);
 }

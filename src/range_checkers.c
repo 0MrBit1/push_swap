@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   range_checkers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acharik <acharik@student.42.fr>            +#+  +:+       +#+        */
+/*   By: acharik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:54:59 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/16 17:52:06 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/18 04:09:19 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	range_decider(int size, int *start_end)
 	else if (size >= 100)
 		range = 9;
 	else
-		range = 5;
+		range = size;
 	start_end[0] = 0;
 	start_end[1] = range;
 }
