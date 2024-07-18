@@ -6,7 +6,7 @@
 /*   By: acharik <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 15:32:06 by acharik           #+#    #+#             */
-/*   Updated: 2024/07/18 03:32:18 by acharik          ###   ########.fr       */
+/*   Updated: 2024/07/18 03:59:21 by acharik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,38 +51,38 @@ void	check_if_deplicated(int *stake_a, int *lens)
 		i++;
 	}
 }
-void get_index_smalle_num(int **stake_a, int **stake_b , int *lens , int *buble_sorted)
+int handle_two(int *stake_a, int *lens)
 {
-	int large_num ; 
+
+	if (lens[1] == 2)
+	{ 
+		if ((stake_a)[1] > (stake_a)[0])
+			sa(stake_a, lens[1]);
+		return 1;
+	}
+	return 0;
+
 	
-	
-	large_num = buble_sorted[lens[1] - 1];
-	if ((*stake_a)[lens[1] - 1] == large_num)
-		ra(*stake_a, lens[1]);
-	else if ((*stake_a)[1] == large_num)
-		rra(*stake_a, lens[1]);
-	if ((*stake_a)[lens[1] - 1] > (*stake_a)[1])
-		sa(*stake_a, lens[1]);
-	pa(stake_a, stake_b, &(lens[1]), &(lens[2]));
-	pa(stake_a, stake_b, &(lens[1]), &(lens[2]));
 }
-void pope(int **stake_a, int **stake_b, int *lens, int smalle_num)
+void pope(int **stake_a, int **stake_b, int *lens, int small_num)
 {
-	int i;
 	int small_index;
+	int i ;
+
 	i = 0;
+	
 
 	while (1)
 	{
-		if (smalle_num == (*stake_a)[i])
+		if (small_num == (*stake_a)[i])
 		{
-			small_index = i ;
-			break ;
+			small_index = i ; 
+			break;
 		}
 		i++;
 	}
 
-	while (smalle_num != (*stake_a)[lens[1] - 1])
+	while (small_num != (*stake_a)[lens[1] - 1])
 	{
 		if (small_index >= lens[1] / 2)
 			ra(*stake_a, lens[1]);
@@ -93,14 +93,11 @@ void pope(int **stake_a, int **stake_b, int *lens, int smalle_num)
 }
 void  sort_five_args(int **stake_a , int **stake_b , int *lens)
 {
+	int large_num;
 	int *buble_sorted;
 
-	if (lens[1] == 2)
-	{ 
-		if ((*stake_a)[1] > (*stake_a)[0])
-			sa(*stake_a, lens[1]);
-		return ;
-	}
+	if(handle_two(*stake_a , lens))
+		return ; 
 	buble_sorted = malloc(sizeof(int)* (lens[0]) ) ; 
 	while (lens[1] > 3)
 	{
@@ -110,7 +107,13 @@ void  sort_five_args(int **stake_a , int **stake_b , int *lens)
 	}
 	ft_memmove(buble_sorted , *stake_a , sizeof(int)*(lens[1])) ;
 	bubble_sort(buble_sorted, lens[1]);
-	get_index_smalle_num(stake_a, stake_b , lens ,buble_sorted) ; 
-
-	
+	large_num = buble_sorted[lens[1] - 1];
+	if ((*stake_a)[lens[1] - 1] == large_num)
+		ra(*stake_a, lens[1]);
+	else if ((*stake_a)[1] == large_num)
+		rra(*stake_a, lens[1]);
+	if ((*stake_a)[lens[1] - 1] > (*stake_a)[1])
+		sa(*stake_a, lens[1]);
+	pa(stake_a, stake_b, &(lens[1]), &(lens[2]));
+	pa(stake_a, stake_b, &(lens[1]), &(lens[2]));
 }
