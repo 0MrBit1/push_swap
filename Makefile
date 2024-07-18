@@ -1,5 +1,5 @@
 # Compiler and flags
-CFLAGS = -Wall -Wextra -fsanitize=leak -g 
+CFLAGS = -Wall -Wextra -Werror -fsanitize=leak
 
 # Source files
 SRC = src/arguments_checker.c  src/bubble_sort.c src/instruction_repeat.c src/instructions_1.c src/instructions_2.c src/push_swap.c src/range_checkers.c src/stake_utils.c src/basic_tests.c
