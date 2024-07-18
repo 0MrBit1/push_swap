@@ -113,5 +113,5 @@ void	sort_five_args(int **stake_a, int **stake_b, int *lens)
 		sa(*stake_a, lens[1]);
 	pa(stake_a, stake_b, &(lens[1]), &(lens[2]));
 	pa(stake_a, stake_b, &(lens[1]), &(lens[2]));
-	free(bubble_sort);
+	free(buble_sorted);
 }
