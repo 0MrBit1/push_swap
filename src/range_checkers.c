@@ -21,7 +21,7 @@ void	range_decider(int size, int *start_end)
 	else if (size >= 200)
 		range = 18;
 	else if (size >= 100)
-		range = 9;
+		range = 20;
 	else
 		range = size;
 	start_end[0] = 0;

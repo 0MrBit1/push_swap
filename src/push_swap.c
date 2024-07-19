@@ -33,35 +33,15 @@ int	begin_checks(int stake_top, int *sorted_array, int *start_end,
 	return (i);
 }
 
-void	dispatcher(int status, int ***stake_a_b, int *start_end, int *lens)
+void	dispatcher(int status, int ***stake_a_b, int *start_end, int *lens )
 {
 	int	**stake_a;
 	int	**stake_b;
-	int ra_or_rra; 
-	int in ; 
-	int i ;
 
 	stake_a = stake_a_b[0];
 	stake_b = stake_a_b[1];
-	i = 0 ;
 	if (!status)
-	{
-		while (i < lens[1] )
-		{
-			in = check_if_in((*stake_a)[i], sorted_array, start_end) ; 
-			if (in)
-			{
-				break ; 
-			}
-			i++
-			
-		}
-		in = check_if_in(int stake_top, int *sorted_array, int *start_end) ; 
-		
-		
-		ra_or_rra = rotate_or_reverse(*stake_a, lens[1] , int search_for) ; 
 		ra(*stake_a, lens[1]);
-	}
 	else if (status == 1)
 	{
 		pb(stake_a, stake_b, &(lens[1]), &(lens[2]));
