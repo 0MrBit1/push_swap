@@ -31,10 +31,13 @@ static int	overflow_checker(char *number)
 	char	*int_min;
 	int		i;
 	int		number_len;
+	int		overflow;
 
 	i = 0;
 	int_min = "2147483648";
-	if (!ft_strncmp(number, int_min, 10) || !ft_strncmp(number, "+2147483648", 11) )
+	overflow = !ft_strncmp(number, int_min, 10);
+	overflow = overflow || !ft_strncmp(number, "+2147483648", 11);
+	if (overflow)
 		return (1);
 	if (*number == '+' || *number == '-')
 		number++;
