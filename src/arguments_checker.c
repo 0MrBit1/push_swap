@@ -34,7 +34,7 @@ static int	overflow_checker(char *number)
 
 	i = 0;
 	int_min = "2147483648";
-	if (!ft_strncmp(number, int_min, 10))
+	if (!ft_strncmp(number, int_min, 10) || !ft_strncmp(number, "+2147483648", 11) )
 		return (1);
 	if (*number == '+' || *number == '-')
 		number++;
